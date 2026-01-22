@@ -1,0 +1,33 @@
+{
+  "name": "spotlight-screenshot",
+  "version": "1.0.0",
+  "description": "Browser extension to capture spotlight screenshots - highlight any element or drag to select, with dimmed/blurred background",
+  "type": "module",
+  "author": "olestole",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/olestole/spotlight-screenshot"
+  },
+  "keywords": [
+    "browser-extension",
+    "screenshot",
+    "spotlight",
+    "chrome-extension",
+    "firefox-extension"
+  ],
+  "scripts": {
+    "dev": "pnpm run build --watch",
+    "build": "ENTRY=background vite build && ENTRY=content vite build && ENTRY=popup vite build && cp src/content/styles.css dist/content/",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.270",
+    "@types/webextension-polyfill": "^0.12.4",
+    "typescript": "^5.4.0",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  }
+}
