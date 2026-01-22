@@ -55,13 +55,13 @@ export class Highlighter {
 
   private createOverlay() {
     this.overlay = document.createElement('div');
-    this.overlay.className = 'spotlight-highlight-overlay';
+    this.overlay.className = 'spotlit-highlight-overlay';
     document.body.appendChild(this.overlay);
   }
 
   private createDragOverlay() {
     this.dragOverlay = document.createElement('div');
-    this.dragOverlay.className = 'spotlight-drag-overlay';
+    this.dragOverlay.className = 'spotlit-drag-overlay';
     document.body.appendChild(this.dragOverlay);
   }
 
@@ -105,7 +105,7 @@ export class Highlighter {
 
     if (!element || element === this.currentElement) return;
 
-    if (element.closest('.spotlight-highlight-overlay, .spotlight-drag-overlay, .spotlight-toast')) return;
+    if (element.closest('.spotlit-highlight-overlay, .spotlit-drag-overlay, .spotlit-toast')) return;
 
     this.currentElement = element;
     this.updateOverlayPosition(element);

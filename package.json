@@ -1,5 +1,5 @@
 {
-  "name": "spotlight-screenshot",
+  "name": "spotlit",
   "version": "1.0.0",
   "description": "Browser extension to capture spotlight screenshots - highlight any element or drag to select, with dimmed/blurred background",
   "type": "module",
@@ -7,12 +7,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/olestole/spotlight-screenshot"
+    "url": "https://github.com/olestole/spotlit"
   },
   "keywords": [
     "browser-extension",
     "screenshot",
     "spotlight",
+    "spotlit",
     "chrome-extension",
     "firefox-extension"
   ],

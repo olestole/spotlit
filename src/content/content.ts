@@ -75,7 +75,7 @@ async function handleElementSelect(bounds: ElementBounds) {
     await copyImageToClipboard(finalImage);
     showNotification('Copied to clipboard!', 'success');
   } catch (err) {
-    console.error('[Spotlight] Error processing image:', err);
+    console.error('[Spotlit] Error processing image:', err);
     showNotification('Failed to process image', 'error');
   }
 
@@ -84,7 +84,7 @@ async function handleElementSelect(bounds: ElementBounds) {
 
 function showNotification(message: string, type: 'success' | 'error') {
   const toast = document.createElement('div');
-  toast.className = `spotlight-toast spotlight-toast--${type}`;
+  toast.className = `spotlit-toast spotlit-toast--${type}`;
   toast.textContent = message;
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 2000);

@@ -1,4 +1,4 @@
-# Spotlight Screenshot
+# Spotlit
 
 Browser extension that creates professional spotlight screenshots. Click any DOM element or drag to select a region - the selected area stays bright while the background is dimmed or blurred.
 

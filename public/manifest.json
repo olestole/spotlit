@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Spotlight Screenshot",
+  "name": "Spotlit",
   "version": "1.0.0",
   "description": "Highlight any element or drag to select - creates spotlight screenshots with dimmed or blurred backgrounds",
-  "homepage_url": "https://github.com/olestole/spotlight-screenshot",
+  "homepage_url": "https://github.com/olestole/spotlit",
   "browser_specific_settings": {
     "gecko": {
-      "id": "spotlight-screenshot@olestole.dev",
+      "id": "spotlit@olestole.dev",
       "strict_min_version": "121.0"
     }
   },

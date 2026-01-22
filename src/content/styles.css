@@ -1,4 +1,4 @@
-.spotlight-highlight-overlay {
+.spotlit-highlight-overlay {
   position: absolute;
   pointer-events: none;
   background: rgba(59, 130, 246, 0.2);
@@ -10,7 +10,7 @@
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
-.spotlight-drag-overlay {
+.spotlit-drag-overlay {
   position: absolute;
   pointer-events: none;
   background: rgba(59, 130, 246, 0.15);
@@ -20,7 +20,7 @@
   display: none;
 }
 
-.spotlight-toast {
+.spotlit-toast {
   position: fixed;
   bottom: 24px;
   left: 50%;
@@ -31,20 +31,20 @@
   font-size: 14px;
   font-weight: 500;
   z-index: 2147483647;
-  animation: spotlight-toast-in 0.2s ease-out;
+  animation: spotlit-toast-in 0.2s ease-out;
 }
 
-.spotlight-toast--success {
+.spotlit-toast--success {
   background: #10b981;
   color: white;
 }
 
-.spotlight-toast--error {
+.spotlit-toast--error {
   background: #ef4444;
   color: white;
 }
 
-@keyframes spotlight-toast-in {
+@keyframes spotlit-toast-in {
   from {
     opacity: 0;
     transform: translateX(-50%) translateY(10px);
