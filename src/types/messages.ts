@@ -3,6 +3,7 @@ export interface ElementBounds {
   y: number;
   width: number;
   height: number;
+  elementBorderRadius?: number; // computed border-radius of selected element
 }
 
 export type MessageType =

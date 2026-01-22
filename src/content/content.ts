@@ -73,7 +73,7 @@ async function handleElementSelect(bounds: ElementBounds) {
     const finalImage = await composeSpotlightImage(response.payload, bounds, config);
 
     await copyImageToClipboard(finalImage);
-    showNotification('Copied to clipboard!', 'success');
+    showNotification('Copied!', 'success', finalImage);
   } catch (err) {
     console.error('[Spotlit] Error processing image:', err);
     showNotification('Failed to process image', 'error');
@@ -82,10 +82,31 @@ async function handleElementSelect(bounds: ElementBounds) {
   deactivate();
 }
 
-function showNotification(message: string, type: 'success' | 'error') {
+function showNotification(message: string, type: 'success' | 'error', blob?: Blob) {
   const toast = document.createElement('div');
   toast.className = `spotlit-toast spotlit-toast--${type}`;
-  toast.textContent = message;
+
+  const text = document.createElement('span');
+  text.textContent = message;
+  toast.appendChild(text);
+
+  if (blob) {
+    const downloadBtn = document.createElement('button');
+    downloadBtn.className = 'spotlit-toast-download';
+    downloadBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+    downloadBtn.title = 'Save to Downloads';
+    downloadBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `spotlit-${Date.now()}.png`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+    toast.appendChild(downloadBtn);
+  }
+
   document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 2000);
+  setTimeout(() => toast.remove(), 4000);
 }

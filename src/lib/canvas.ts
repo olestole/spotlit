@@ -32,12 +32,18 @@ export async function composeSpotlightImage(
     height: Math.max(1, Math.min(paddedBounds.height - (clampedY - paddedBounds.y), canvas.height - clampedY)),
   };
 
-  const borderRadius = config.borderRadius * dpr;
+  // Calculate border radius
+  // Formula: outerRadius = innerRadius + padding (when element has border-radius)
+  const rawRadius = elementBounds.elementBorderRadius !== undefined
+    ? elementBounds.elementBorderRadius + config.padding
+    : config.borderRadius;
+  const maxRadius = Math.min(bounds.width, bounds.height) / 2;
+  const borderRadius = Math.min(rawRadius * dpr, maxRadius);
 
   if (config.useBlur) {
-    await composeWithBlur(ctx, img, bounds, borderRadius, config.blurAmount * dpr);
+    await composeWithBlur(ctx, img, bounds, borderRadius, config.blurAmount * dpr, config.showStroke);
   } else {
-    composeWithDim(ctx, img, bounds, borderRadius, config.overlayOpacity);
+    composeWithDim(ctx, img, bounds, borderRadius, config.overlayOpacity, config.showStroke);
   }
 
   return new Promise((resolve, reject) => {
@@ -53,34 +59,34 @@ function composeWithDim(
   img: HTMLImageElement,
   bounds: { x: number; y: number; width: number; height: number },
   borderRadius: number,
-  opacity: number
+  opacity: number,
+  showStroke: boolean
 ): void {
   const canvas = ctx.canvas;
 
   // 1. Draw full screenshot
   ctx.drawImage(img, 0, 0);
 
-  // 2. Save spotlight region
-  const spotlightData = ctx.getImageData(bounds.x, bounds.y, bounds.width, bounds.height);
-
-  // 3. Apply dark overlay
+  // 2. Apply dark overlay
   ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // 4. Create rounded rect clip path for spotlight
+  // 3. Create rounded rect clip path for spotlight
   ctx.save();
   roundedRect(ctx, bounds.x, bounds.y, bounds.width, bounds.height, borderRadius);
   ctx.clip();
 
-  // 5. Restore spotlight region
-  ctx.putImageData(spotlightData, bounds.x, bounds.y);
+  // 4. Draw original image within clipped region
+  ctx.drawImage(img, 0, 0);
   ctx.restore();
 
-  // 6. Draw rounded border
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-  ctx.lineWidth = 2;
-  roundedRect(ctx, bounds.x, bounds.y, bounds.width, bounds.height, borderRadius);
-  ctx.stroke();
+  // 5. Draw rounded border (optional)
+  if (showStroke) {
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.lineWidth = 2;
+    roundedRect(ctx, bounds.x, bounds.y, bounds.width, bounds.height, borderRadius);
+    ctx.stroke();
+  }
 }
 
 async function composeWithBlur(
@@ -88,7 +94,8 @@ async function composeWithBlur(
   img: HTMLImageElement,
   bounds: { x: number; y: number; width: number; height: number },
   borderRadius: number,
-  blurAmount: number
+  blurAmount: number,
+  showStroke: boolean
 ): Promise<void> {
   const canvas = ctx.canvas;
 
@@ -106,11 +113,13 @@ async function composeWithBlur(
   ctx.drawImage(img, 0, 0);
   ctx.restore();
 
-  // 4. Draw border
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-  ctx.lineWidth = 2;
-  roundedRect(ctx, bounds.x, bounds.y, bounds.width, bounds.height, borderRadius);
-  ctx.stroke();
+  // 4. Draw border (optional)
+  if (showStroke) {
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.lineWidth = 2;
+    roundedRect(ctx, bounds.x, bounds.y, bounds.width, bounds.height, borderRadius);
+    ctx.stroke();
+  }
 }
 
 function roundedRect(

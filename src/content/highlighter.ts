@@ -169,11 +169,22 @@ export class Highlighter {
     } else if (this.currentElement) {
       // Click on element
       const rect = this.currentElement.getBoundingClientRect();
+      const computed = window.getComputedStyle(this.currentElement);
+      // Get the max border radius (handles different corners)
+      const radii = [
+        computed.borderTopLeftRadius,
+        computed.borderTopRightRadius,
+        computed.borderBottomLeftRadius,
+        computed.borderBottomRightRadius,
+      ].map(r => parseFloat(r) || 0);
+      const elementBorderRadius = Math.max(...radii);
+
       const bounds: ElementBounds = {
         x: rect.left,
         y: rect.top,
         width: rect.width,
         height: rect.height,
+        elementBorderRadius: elementBorderRadius > 0 ? elementBorderRadius : undefined,
       };
       this.resetDragState();
       this.options.onSelect(bounds);

@@ -41,6 +41,30 @@
       font-weight: 400;
       font-size: 12px;
     }
+    .editable-value {
+      cursor: pointer;
+      padding: 1px 4px;
+      border-radius: 3px;
+      border: 1px solid transparent;
+      min-width: 36px;
+      text-align: right;
+      display: inline-block;
+    }
+    .editable-value:hover {
+      background: #f3f4f6;
+      border-color: #d1d5db;
+    }
+    .editable-input {
+      width: 44px;
+      padding: 1px 4px;
+      border: 1px solid #3b82f6;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: inherit;
+      text-align: right;
+      outline: none;
+      color: #1a1a1a;
+    }
     input[type="range"] {
       width: 100%;
       height: 6px;
@@ -107,23 +131,69 @@
     .blur-options.visible {
       display: block;
     }
+    .capture-section {
+      margin-bottom: 16px;
+    }
+    .capture-btn {
+      width: 100%;
+      padding: 10px 16px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .capture-btn:hover {
+      background: #2563eb;
+    }
+    .capture-btn:active {
+      background: #1d4ed8;
+    }
+    .hotkey {
+      margin-top: 8px;
+      text-align: center;
+      font-size: 11px;
+      color: #666;
+    }
+    .hotkey kbd {
+      display: inline-block;
+      padding: 2px 6px;
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 11px;
+    }
+    .hotkey a {
+      text-decoration: none;
+    }
+    .hotkey a:hover kbd {
+      background: #e5e7eb;
+      border-color: #9ca3af;
+    }
   </style>
 </head>
 <body>
-  <h1>Spotlit Settings</h1>
+  <div class="capture-section">
+    <button class="capture-btn" id="capture-btn">Start Capture</button>
+    <div class="hotkey">or press <a href="#" id="hotkey-link"><kbd id="hotkey">Alt+Shift+F</kbd></a></div>
+  </div>
 
   <div class="field">
-    <label>Padding <span id="padding-value">8px</span></label>
+    <label>Padding <span id="padding-value" class="editable-value" data-suffix="px" data-min="0" data-max="32">8px</span></label>
     <input type="range" id="padding" min="0" max="32" value="8">
   </div>
 
   <div class="field">
-    <label>Border Radius <span id="radius-value">8px</span></label>
+    <label>Border Radius <span id="radius-value" class="editable-value" data-suffix="px" data-min="0" data-max="32">8px</span></label>
     <input type="range" id="radius" min="0" max="32" value="8">
   </div>
 
   <div class="field">
-    <label>Dim Amount <span id="opacity-value">70%</span></label>
+    <label>Dim Amount <span id="opacity-value" class="editable-value" data-suffix="%" data-min="0" data-max="100">70%</span></label>
     <input type="range" id="opacity" min="0" max="100" value="70">
   </div>
 
@@ -136,8 +206,18 @@
       </label>
     </div>
     <div class="blur-options" id="blur-options">
-      <label>Blur Amount <span id="blur-value">10px</span></label>
+      <label>Blur Amount <span id="blur-value" class="editable-value" data-suffix="px" data-min="1" data-max="30">10px</span></label>
       <input type="range" id="blur" min="1" max="30" value="10">
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="toggle-row">
+      <label style="margin-bottom: 0">Show Border</label>
+      <label class="toggle">
+        <input type="checkbox" id="show-stroke">
+        <span class="toggle-slider"></span>
+      </label>
     </div>
   </div>
 

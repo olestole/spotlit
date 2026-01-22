@@ -4,6 +4,7 @@ export interface SpotlightConfig {
   overlayOpacity: number; // 0-1
   useBlur: boolean; // blur vs solid overlay
   blurAmount: number; // px blur radius
+  showStroke: boolean; // border around spotlight
 }
 
 export const defaultConfig: SpotlightConfig = {
@@ -12,4 +13,5 @@ export const defaultConfig: SpotlightConfig = {
   overlayOpacity: 0.7,
   useBlur: false,
   blurAmount: 10,
+  showStroke: false,
 };
