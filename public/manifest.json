@@ -7,7 +7,11 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "spotlit@olestole.dev",
-      "strict_min_version": "121.0"
+      "strict_min_version": "121.0",
+      "data_collection_permissions": {
+        "technically_required": true,
+        "user_data": false
+      }
     }
   },
   "permissions": [
