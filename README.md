@@ -1,8 +1,10 @@
 <p align="center">
-  <img src="public/spotlit-social-badge.png" alt="Spotlit" width="960">
+  <img src="public/spotlit-social-badge.png" alt="Spotlit" width="1280">
 </p>
 
+<a href="https://www.buymeacoffee.com/olestole"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="35"></a>
 
+---
 
 Browser extension for spotlight screenshots. Click any element or drag to select - the selection stays bright while the background dims or blurs. Auto-copies to clipboard.
 
@@ -10,7 +12,7 @@ Browser extension for spotlight screenshots. Click any element or drag to select
 **Features:** Click or drag capture · Configurable padding, border radius, dim/blur · Cross-browser (Chrome + Firefox)
 
 <p align="center">
-  <img src="public/spotlit-demo.gif" alt="Spotlit demo" width="960">
+  <img src="public/spotlit-demo.gif" alt="Spotlit demo" width="1280">
 </p>
 
 ---
