@@ -2,8 +2,6 @@
   <img src="public/spotlit-social-badge.png" alt="Spotlit" width="640">
 </p>
 
-# Spotlit
-
 Browser extension for spotlight screenshots. Click any element or drag to select - the selection stays bright while the background dims or blurs. Auto-copies to clipboard.
 
 **Features:** Click or drag capture · Configurable padding, border radius, dim/blur · Cross-browser (Chrome + Firefox)
@@ -20,7 +18,7 @@ pnpm install && pnpm run build
 
 ## Usage
 
-1. Press <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>F</kbd> (or click extension icon)
+1. Press <kbd>⌥ Option</kbd> <kbd>⇧ Shift</kbd> <kbd>F</kbd> (or click extension icon)
 2. Click an element or drag a region
 3. Screenshot copied to clipboard
 
