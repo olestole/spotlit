@@ -1,10 +1,19 @@
 <p align="center">
-  <img src="public/spotlit-social-badge.png" alt="Spotlit" width="640">
+  <img src="public/spotlit-social-badge.png" alt="Spotlit" width="960">
 </p>
+
+
 
 Browser extension for spotlight screenshots. Click any element or drag to select - the selection stays bright while the background dims or blurs. Auto-copies to clipboard.
 
+
 **Features:** Click or drag capture · Configurable padding, border radius, dim/blur · Cross-browser (Chrome + Firefox)
+
+<p align="center">
+  <img src="public/spotlit-demo.gif" alt="Spotlit demo" width="960">
+</p>
+
+---
 
 ## Install
 
