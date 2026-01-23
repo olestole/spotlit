@@ -1,73 +1,40 @@
+<p align="center">
+  <img src="public/spotlit-social-badge.png" alt="Spotlit" width="640">
+</p>
+
 # Spotlit
 
-Browser extension that creates professional spotlight screenshots. Click any DOM element or drag to select a region - the selected area stays bright while the background is dimmed or blurred.
+Browser extension for spotlight screenshots. Click any element or drag to select - the selection stays bright while the background dims or blurs. Auto-copies to clipboard.
 
-## Features
+**Features:** Click or drag capture · Configurable padding, border radius, dim/blur · Cross-browser (Chrome + Firefox)
 
-- **Click to capture** - Hover over any element and click to capture it
-- **Drag to select** - Draw a custom rectangle to capture any region
-- **Configurable styling**:
-  - Padding around selection
-  - Border radius for rounded corners
-  - Adjustable dim opacity
-  - Optional blur effect instead of dim
-- **Cross-browser** - Works on Chrome and Firefox
-- **Keyboard shortcut** - `Alt+Shift+F` to activate
-
-## Installation
-
-### From source
+## Install
 
 ```bash
-pnpm install
-pnpm run build
+pnpm install && pnpm run build
 ```
 
-**Chrome:**
-1. Open `chrome://extensions`
-2. Enable "Developer mode"
-3. Click "Load unpacked"
-4. Select the `dist/` folder
+**Chrome:** `chrome://extensions` → Developer mode → Load unpacked → select `dist/`
 
-**Firefox:**
-1. Open `about:debugging#/runtime/this-firefox`
-2. Click "Load Temporary Add-on"
-3. Select any file in `dist/`
+**Firefox:** `about:debugging#/runtime/this-firefox` → Load Temporary Add-on → select any file in `dist/`
 
 ## Usage
 
-1. Press `Alt+Shift+F` (or click the extension icon and use the popup)
-2. **Click** on any element to capture it, or **drag** to select a custom area
-3. The screenshot is automatically copied to your clipboard
-4. Paste anywhere
+1. Press <kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>F</kbd> (or click extension icon)
+2. Click an element or drag a region
+3. Screenshot copied to clipboard
 
 ## Configuration
 
-Click the extension icon to open settings:
-
-| Setting | Description |
-|---------|-------------|
-| Padding | Space around the highlighted element (0-32px) |
-| Border Radius | Rounded corners for the highlight (0-32px) |
-| Dim Amount | How dark the background becomes (0-100%) |
-| Use Blur | Toggle blur effect instead of dim |
-| Blur Amount | Blur intensity when blur is enabled (1-30px) |
+Click extension icon to adjust: Padding · Border Radius · Dim Amount · Blur toggle/amount · Border toggle
 
 ## Development
 
 ```bash
-pnpm install
-pnpm run dev      # Watch mode
-pnpm run build    # Production build
+pnpm run dev       # Watch mode
+pnpm run build     # Production build
 pnpm run typecheck
 ```
-
-## Tech Stack
-
-- TypeScript
-- Vite
-- WebExtension Polyfill (cross-browser support)
-- Manifest V3
 
 ## License
 
